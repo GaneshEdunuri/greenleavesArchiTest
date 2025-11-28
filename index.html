@@ -84,6 +84,18 @@
         .about-section { margin-top: 60px; padding: 40px 0; scroll-margin-top: 80px; }
         .about-content { max-width: 900px; margin: 0 auto; background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .about-content p { font-size: 18px; line-height: 2; color: #555; text-align: justify; letter-spacing: 0.5px; }
+        .quote-section { margin-top: 60px; padding: 40px 0; scroll-margin-top: 80px; background-color: #f9f9f9; }
+        .quote-container { max-width: 800px; margin: 0 auto; background-color: white; padding: 50px 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .quote-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .quote-form .form-group.full-width { grid-column: 1 / -1; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+        .checkbox-group label { display: flex; align-items: center; gap: 10px; font-size: 15px; color: #555; cursor: pointer; }
+        .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: #2c5f2d; }
+        .radio-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .radio-group label { display: flex; align-items: center; gap: 8px; font-size: 15px; color: #555; cursor: pointer; }
+        .radio-group input[type="radio"] { width: 18px; height: 18px; cursor: pointer; accent-color: #2c5f2d; }
+        .quote-section .section-heading { margin-bottom: 10px; }
+        .quote-section .section-subtitle { text-align: center; color: #777; font-size: 16px; margin-bottom: 40px; line-height: 1.6; }
         .contact-section { margin-top: 60px; padding: 40px 0; scroll-margin-top: 80px; }
         .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
         .contact-info { background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -176,6 +188,8 @@
             .service-tab { padding: 8px 12px; font-size: 12px; }
             .about-content { padding: 20px 12px; }
             .about-content p { font-size: 13px; }
+            .quote-container { padding: 30px 20px; }
+            .quote-form { grid-template-columns: 1fr; gap: 18px; }
             .contact-container { grid-template-columns: 1fr; gap: 30px; }
             .contact-info, .contact-form-wrapper { padding: 25px 15px; }
             .contact-info h3 { font-size: 22px; margin-bottom: 12px; }
@@ -208,6 +222,7 @@
                     <li><a href="#projects">PROJECTS</a></li>
                     <li><a href="#services">SERVICES</a></li>
                     <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#quote">GET QUOTE</a></li>
                     <li><a href="#contact">CONTACT US</a></li>
                 </ul>
             </nav>
@@ -502,6 +517,115 @@
             <h2 class="section-heading">ABOUT</h2>
             <div class="about-content">
                 <p>At GREENLEAVES ARCHI, we believe that exceptional interior design is more than just aesthetics – it's about creating spaces that inspire, comfort, and transform lives. With years of expertise and a passionate team of creative professionals, we bring your vision to life through innovative design solutions that perfectly blend functionality with elegance. Our commitment to sustainability and attention to detail ensures that every project reflects the unique personality and lifestyle of our clients. From concept to completion, we meticulously craft spaces that not only meet but exceed expectations, turning houses into homes and commercial spaces into memorable experiences. Trust GREENLEAVES ARCHI to deliver timeless designs that stand the test of time while embracing modern trends and eco-friendly practices.</p>
+            </div>
+        </section>
+
+        <!-- Get Your Quote Section -->
+        <section id="quote" class="quote-section">
+            <h2 class="section-heading">GET YOUR QUOTE</h2>
+            <p class="section-subtitle">Share your project details and we'll provide you with a customized quote within 24 hours</p>
+            <div class="quote-container">
+                <form class="quote-form" onsubmit="handleQuoteSubmit(event)">
+                    <div class="form-group">
+                        <label for="quote-name">Full Name *</label>
+                        <input type="text" id="quote-name" name="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-phone">Phone Number *</label>
+                        <input type="tel" id="quote-phone" name="phone" required pattern="[0-9]{10}" placeholder="10-digit mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-email">Email Address *</label>
+                        <input type="email" id="quote-email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-city">City *</label>
+                        <input type="text" id="quote-city" name="city" required placeholder="Your city">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="quote-address">Property Address</label>
+                        <input type="text" id="quote-address" name="address" placeholder="Property location (optional)">
+                    </div>
+                    <div class="form-group">
+                        <label>Property Type *</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="property-type" value="apartment" required> Apartment</label>
+                            <label><input type="radio" name="property-type" value="villa"> Villa</label>
+                            <label><input type="radio" name="property-type" value="independent-house"> Independent House</label>
+                            <label><input type="radio" name="property-type" value="office"> Office</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-area">Carpet Area (sq ft) *</label>
+                        <input type="number" id="quote-area" name="area" required min="100" placeholder="E.g., 1200">
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-bedrooms">Number of Bedrooms</label>
+                        <select id="quote-bedrooms" name="bedrooms">
+                            <option value="">Select</option>
+                            <option value="1">1 BHK</option>
+                            <option value="2">2 BHK</option>
+                            <option value="3">3 BHK</option>
+                            <option value="4">4 BHK</option>
+                            <option value="5+">5+ BHK</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-budget">Budget Range (₹)</label>
+                        <select id="quote-budget" name="budget">
+                            <option value="">Select budget</option>
+                            <option value="3-5L">3 - 5 Lakhs</option>
+                            <option value="5-8L">5 - 8 Lakhs</option>
+                            <option value="8-12L">8 - 12 Lakhs</option>
+                            <option value="12-20L">12 - 20 Lakhs</option>
+                            <option value="20L+">20 Lakhs+</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Rooms to Design *</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="rooms" value="living-room"> Living Room</label>
+                            <label><input type="checkbox" name="rooms" value="master-bedroom"> Master Bedroom</label>
+                            <label><input type="checkbox" name="rooms" value="guest-bedroom"> Guest Bedroom(s)</label>
+                            <label><input type="checkbox" name="rooms" value="kitchen"> Kitchen</label>
+                            <label><input type="checkbox" name="rooms" value="dining"> Dining Area</label>
+                            <label><input type="checkbox" name="rooms" value="pooja"> Pooja Room</label>
+                            <label><input type="checkbox" name="rooms" value="balcony"> Balcony</label>
+                            <label><input type="checkbox" name="rooms" value="bathroom"> Bathroom(s)</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-timeline">Expected Timeline</label>
+                        <select id="quote-timeline" name="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="urgent">Urgent (Within 1 month)</option>
+                            <option value="1-2months">1-2 Months</option>
+                            <option value="2-3months">2-3 Months</option>
+                            <option value="3-6months">3-6 Months</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Design Style Preference</label>
+                        <select id="quote-style" name="style">
+                            <option value="">Select style</option>
+                            <option value="modern">Modern</option>
+                            <option value="contemporary">Contemporary</option>
+                            <option value="traditional">Traditional</option>
+                            <option value="minimalist">Minimalist</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="scandinavian">Scandinavian</option>
+                            <option value="eclectic">Eclectic</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="quote-requirements">Additional Requirements</label>
+                        <textarea id="quote-requirements" name="requirements" rows="4" placeholder="Tell us more about your vision, specific requirements, or any special considerations..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="submit-btn">Get Free Quote</button>
+                    </div>
+                </form>
             </div>
         </section>
 
@@ -920,11 +1044,48 @@
         // Phone input restriction
         function initializePhoneInput() {
             const phoneInput = document.getElementById('phone');
+            const quotePhoneInput = document.getElementById('quote-phone');
+            
             if (phoneInput) {
                 phoneInput.addEventListener('input', function(e) {
                     this.value = this.value.replace(/[^0-9]/g, '');
                 });
             }
+            
+            if (quotePhoneInput) {
+                quotePhoneInput.addEventListener('input', function(e) {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+            }
+        }
+
+        // Quote form submission
+        function handleQuoteSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('quote-name').value;
+            const phone = document.getElementById('quote-phone').value;
+            const email = document.getElementById('quote-email').value;
+            const city = document.getElementById('quote-city').value;
+            const area = document.getElementById('quote-area').value;
+            
+            // Get selected rooms
+            const rooms = Array.from(document.querySelectorAll('input[name="rooms"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+            
+            if (!rooms) {
+                alert('Please select at least one room to design.');
+                return false;
+            }
+            
+            // Success message
+            alert(`Thank you, ${name}! We've received your quote request for ${area} sq ft in ${city}.\n\nRooms: ${rooms}\n\nOur team will contact you within 24 hours with a detailed quotation.`);
+            
+            // Reset form
+            event.target.reset();
+            
+            return false;
         }
     </script>
 </body>
