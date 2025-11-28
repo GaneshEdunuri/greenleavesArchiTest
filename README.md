@@ -33,9 +33,9 @@ A modern, responsive portfolio website for GREENLEAVES ARCHI, showcasing premium
 
 ## Contact
 
-📞 Phone: 8885933533  
+📞 Phone:+91 8885933533  
 📍 Location: Hyderabad, India  
-💬 WhatsApp: Click the floating button
+💬 WhatsApp: https://wa.me/918885933533
 
 ---
 
