@@ -21,7 +21,7 @@ A modern, responsive portfolio website for GREENLEAVES ARCHI, showcasing premium
 
 ## Live Demo
 
-[View Website](https://yourusername.github.io/greenleavesArchiTest)
+[View Website](https://ganeshedunuri.github.io/greenleavesArchiTest/)
 
 ## Sections
 
