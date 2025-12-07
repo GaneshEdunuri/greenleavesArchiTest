@@ -14,14 +14,22 @@
                 <img src="LOGO.jpg" alt="GreenLeaves Archi Logo" class="logo">
                 <h1 class="site-title">GREENLEAVES ARCHI</h1>
             </div>
-            <nav class="header-nav">
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="header-nav" id="mobile-nav">
                 <ul>
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#projects">PROJECTS</a></li>
-                    <li><a href="#services">SERVICES</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#quote">GET QUOTE</a></li>
-                    <li><a href="#contact">CONTACT US</a></li>
+                    <li><a href="#home" onclick="navigateToSection(event, 'home')">HOME</a></li>
+                    <li><a href="#projects" onclick="navigateToSection(event, 'projects')">PROJECTS</a></li>
+                    <li><a href="#services" onclick="navigateToSection(event, 'services')">SERVICES</a></li>
+                    <li><a href="#about" onclick="navigateToSection(event, 'about')">ABOUT</a></li>
+                    <li><a href="#quote" onclick="navigateToSection(event, 'quote')">GET QUOTE</a></li>
+                    <li><a href="#contact" onclick="navigateToSection(event, 'contact')">CONTACT US</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,57 +40,20 @@
         <div class="hero-container">
             <div class="hero-content">
                 <p class="hero-subtitle">Transforming Spaces, Creating Dreams</p>
-                <p class="hero-description">
-                    We are a premier architectural and interior design firm dedicated to creating sustainable, 
-                    innovative, and timeless spaces. Our passion lies in transforming your vision into reality 
-                    through thoughtful design and meticulous attention to detail.
-                </p>
+                
                 <blockquote class="hero-quote">
                     "Architecture is not just about buildings; it's about creating experiences that inspire and endure."
                 </blockquote>
-                <p class="hero-description">
-                    With years of expertise in residential and commercial design, we bring together aesthetics, 
-                    functionality, and environmental consciousness to every project.
-                </p>
+                
             </div>
             
             <div class="hero-slideshow">
-                <div class="slideshow-container">
-                    <div class="slide active">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Modern Architecture 1">
-                        <div class="slide-caption">Modern Residential Design</div>
-                    </div>
-
-                    <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="Modern Architecture 2">
-                        <div class="slide-caption">Contemporary Living Spaces</div>
-                    </div>
-
-                    <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop" alt="Modern Architecture 3">
-                        <div class="slide-caption">Sustainable Architecture</div>
-                    </div>
-
-                    <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=400&fit=crop" alt="Modern Architecture 4">
-                        <div class="slide-caption">Innovative Design Solutions</div>
-                    </div>
-
-                    <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&h=400&fit=crop" alt="Modern Architecture 5">
-                        <div class="slide-caption">Luxury Interior Spaces</div>
-                    </div>
-
-                    <a class="prev" onclick="changeSlide(-1)">❮</a>
-                    <a class="next" onclick="changeSlide(1)">❯</a>
+                <div class="slideshow-container" id="slideshow-container">
+                    <!-- Slides will be loaded dynamically -->
                 </div>
 
-                <div class="dots-container">
-                    <span class="dot active" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>
-                    <span class="dot" onclick="currentSlide(5)"></span>
+                <div class="dots-container" id="dots-container">
+                    <!-- Dots will be loaded dynamically -->
                 </div>
             </div>
         </div>
@@ -92,13 +63,13 @@
     <main>
 
         <!-- Before and After Section -->
-        <section class="before-after-section">
+        <section class="before-after-section" data-animate="slide-up">
             <h2 class="section-heading">INTERIOR TRANSFORMATION</h2>
             <div class="before-after-container">
                 <div class="before-after-slider">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1000&h=600&fit=crop" alt="After - Kitchen Interior Design" class="after-image">
+                    <img src="AFTER.JPG" alt="After - Kitchen Interior Design" class="after-image">
                     <div class="slider-overlay">
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1000&h=600&fit=crop" alt="Before - Empty Kitchen" class="before-image">
+                        <img src="BEFORE.JPG" alt="Before - Empty Kitchen" class="before-image">
                     </div>
                     <div class="slider-handle">
                         <div class="slider-line"></div>
@@ -119,7 +90,7 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="projects-section">
+        <section id="projects" class="projects-section" data-animate="slide-up">
             <h2 class="section-heading">PROJECTS</h2>
 
             <!-- Projects will be dynamically generated here -->
@@ -127,104 +98,90 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="services-section">
+        <section id="services" class="services-section" data-animate="slide-up">
             <h2 class="section-heading">SERVICES</h2>
             
-            <div class="service-tabs">
-                <button class="service-tab active" onclick="showService('kitchen')">KITCHEN</button>
-                <button class="service-tab" onclick="showService('bedroom')">BEDROOM</button>
-                <button class="service-tab" onclick="showService('livingroom')">LIVING ROOM</button>
-                <button class="service-tab" onclick="showService('tvunit')">TV UNIT</button>
-                <button class="service-tab" onclick="showService('pooja')">POOJA ROOM</button>
+            <div class="service-tabs" id="service-tabs">
+                <!-- Tabs will be loaded dynamically -->
             </div>
 
-            <!-- Kitchen Service -->
-            <div id="kitchen" class="service-content active">
-                <div class="service-grid">
-                    <div class="service-item" onclick="openGallery('kitchen', 0)">
-                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" alt="Kitchen 1">
+            <div id="services-container">
+                <!-- Service content will be loaded dynamically -->
+            </div>
+
+
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section" data-animate="fade-in">
+            <h2 class="section-heading stats-heading">OUR ACHIEVEMENTS</h2>
+            <p class="stats-subtitle">Numbers that reflect our commitment to excellence</p>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                        </svg>
                     </div>
-                    <div class="service-item" onclick="openGallery('kitchen', 1)">
-                        <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600&h=400&fit=crop" alt="Kitchen 2">
-                    </div>
-                    <div class="service-item" onclick="openGallery('kitchen', 2)">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&h=400&fit=crop" alt="Kitchen 3">
-                    </div>
-                    <div class="service-item" onclick="openGallery('kitchen', 3)">
-                        <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=600&h=400&fit=crop" alt="Kitchen 4">
-                    </div>
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label">Projects Completed</div>
                 </div>
-            </div>
 
-            <!-- Bedroom Service -->
-            <div id="bedroom" class="service-content">
-                <div class="service-grid">
-                    <div class="service-item" onclick="openGallery('bedroom', 0)">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop" alt="Bedroom 1">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
                     </div>
-                    <div class="service-item" onclick="openGallery('bedroom', 1)">
-                        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&h=400&fit=crop" alt="Bedroom 2">
-                    </div>
-                    <div class="service-item" onclick="openGallery('bedroom', 2)">
-                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&h=400&fit=crop" alt="Bedroom 3">
-                    </div>
-                    <div class="service-item" onclick="openGallery('bedroom', 3)">
-                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=400&fit=crop" alt="Bedroom 4">
-                    </div>
+                    <div class="stat-number" data-target="25000">0</div>
+                    <div class="stat-label">Hours of Work</div>
                 </div>
-            </div>
 
-            <!-- Living Room Service -->
-            <div id="livingroom" class="service-content">
-                <div class="service-grid">
-                    <div class="service-item" onclick="openGallery('livingroom', 0)">
-                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&h=400&fit=crop" alt="Living Room 1">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 010 7.75"></path>
+                        </svg>
                     </div>
-                    <div class="service-item" onclick="openGallery('livingroom', 1)">
-                        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=600&h=400&fit=crop" alt="Living Room 2">
-                    </div>
-                    <div class="service-item" onclick="openGallery('livingroom', 2)">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop" alt="Living Room 3">
-                    </div>
-                    <div class="service-item" onclick="openGallery('livingroom', 3)">
-                        <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&h=400&fit=crop" alt="Living Room 4">
-                    </div>
+                    <div class="stat-number" data-target="200">0</div>
+                    <div class="stat-label">Happy Clients</div>
                 </div>
-            </div>
 
-            <!-- TV Unit Service -->
-            <div id="tvunit" class="service-content">
-                <div class="service-grid">
-                    <div class="service-item" onclick="openGallery('tvunit', 0)">
-                        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=600&h=400&fit=crop" alt="TV Unit 1">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
+                        </svg>
                     </div>
-                    <div class="service-item" onclick="openGallery('tvunit', 1)">
-                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&h=400&fit=crop" alt="TV Unit 2">
-                    </div>
-                    <div class="service-item" onclick="openGallery('tvunit', 2)">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=400&fit=crop" alt="TV Unit 3">
-                    </div>
-                    <div class="service-item" onclick="openGallery('tvunit', 3)">
-                        <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&h=400&fit=crop" alt="TV Unit 4">
-                    </div>
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Support Given</div>
                 </div>
-            </div>
 
-            <!-- Pooja Room Service -->
-            <div id="pooja" class="service-content">
-                <div class="service-grid">
-                    <div class="service-item" onclick="openGallery('pooja', 0)">
-                        <img src="POOJA_ROOM/POOJA_ROOM_1.JPG" alt="Pooja Room 1">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
                     </div>
-                    <div class="service-item" onclick="openGallery('pooja', 1)">
-                        <img src="POOJA_ROOM/POOJA_ROOM_2.JPG" alt="Pooja Room 2">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-suffix">%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
                     </div>
-                    <div class="service-item" onclick="openGallery('pooja', 2)">
-                        <img src="POOJA_ROOM/POOJA_ROOM_3.JPG" alt="Pooja Room 3">
-                    </div>
-                    <div class="service-item" onclick="openGallery('pooja', 3)">
-                        <img src="POOJA_ROOM/POOJA_ROOM_4.JPG" alt="Pooja Room 4">
-                    </div>
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">Years Experience</div>
                 </div>
             </div>
         </section>
@@ -238,7 +195,7 @@
         </section>
 
         <!-- Get Your Quote Section -->
-        <section id="quote" class="quote-section">
+        <section id="quote" class="quote-section" data-animate="slide-up">
             <h2 class="section-heading">GET YOUR QUOTE</h2>
             <p class="section-subtitle">Share your project details and we'll provide you with a customized quote within 24 hours</p>
             <div class="quote-container">
@@ -347,7 +304,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact-section">
+        <section id="contact" class="contact-section" data-animate="slide-up">
             <h2 class="section-heading">CONTACT US</h2>
             <div class="contact-info-centered">
                 <h3>Get In Touch</h3>
@@ -440,14 +397,322 @@
     <script>
         // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all functions
+            loadSlideshow();
             generateProjects();
             initializeSlideshows();
             initializeBeforeAfterSlider();
             initializePhoneInput();
+            
+            // Defer services loading for faster initial page load
+            setTimeout(() => loadServices(), 500);
+            
+            // Initialize scroll animations
+            initScrollAnimations();
+        });
+        
+        // Hide loading screen when page is fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 500);
+            }, 800);
+            
+            // Initialize: Show only home section, hide all others
+            const sections = document.querySelectorAll('section[id]');
+            sections.forEach(section => {
+                if (section.id === 'home') {
+                    section.classList.add('section-visible');
+                    section.classList.remove('section-hidden');
+                } else {
+                    section.classList.add('section-hidden');
+                    section.classList.remove('section-visible');
+                }
+            });
+        });
+        
+        // Scroll reveal animations
+        function initScrollAnimations() {
+            const animatedElements = document.querySelectorAll('[data-animate]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        
+                        // Animate stats counter when stats section comes into view
+                        if (entry.target.classList.contains('stats-section')) {
+                            animateStats();
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animatedElements.forEach(el => observer.observe(el));
+        }
+        
+        // Animate statistics counter
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateCount = () => {
+                    current += increment;
+                    if (current < target) {
+                        stat.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        stat.textContent = target.toLocaleString();
+                    }
+                };
+                
+                updateCount();
+            });
+        }
+        
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobile-nav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const body = document.body;
+            
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+            
+            // Lock body scroll when menu is open
+            if (nav.classList.contains('active')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = 'auto';
+            }
+        }
+
+        function closeMobileMenu() {
+            const nav = document.getElementById('mobile-nav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const body = document.body;
+            
+            nav.classList.remove('active');
+            toggle.classList.remove('active');
+            body.style.overflow = 'auto';
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('mobile-nav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (nav && nav.classList.contains('active')) {
+                // Check if click is outside nav and toggle button
+                if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+                    closeMobileMenu();
+                }
+            }
         });
 
+        // Section navigation with zoom transitions
+        function navigateToSection(event, targetId) {
+            event.preventDefault();
+            
+            const targetSection = document.getElementById(targetId);
+            if (!targetSection) return;
+            
+            // Close mobile menu if open
+            closeMobileMenu();
+            
+            // Get all main sections
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Find currently visible section
+            const currentSection = Array.from(sections).find(section => 
+                section.classList.contains('section-visible') && !section.classList.contains('section-hidden')
+            );
+            
+            // If clicking on the same section, do nothing
+            if (currentSection === targetSection) return;
+            
+            // Zoom out current section
+            if (currentSection) {
+                currentSection.classList.add('zoom-out');
+                
+                setTimeout(() => {
+                    currentSection.classList.remove('section-visible', 'zoom-out');
+                    currentSection.classList.add('section-hidden');
+                }, 400);
+            }
+            
+            // Zoom in target section
+            setTimeout(() => {
+                targetSection.classList.remove('section-hidden');
+                targetSection.classList.add('section-visible', 'zoom-in');
+                
+                // Scroll to top without animation
+                window.scrollTo({ top: 0, behavior: 'auto' });
+                
+                // Remove animation class after animation completes
+                setTimeout(() => {
+                    targetSection.classList.remove('zoom-in');
+                }, 600);
+            }, currentSection ? 400 : 0);
+        }
+        
+        // Service categories configuration
+        const SERVICES = [
+            { id: 'kitchen', name: 'KITCHEN', folder: 'SERVICES/KITCHEN', prefix: 'KITCHEN_' },
+            { id: 'bedroom', name: 'BEDROOM', folder: 'SERVICES/BEDROOM', prefix: 'BEDROOM_' },
+            { id: 'livingroom', name: 'LIVING ROOM', folder: 'SERVICES/LIVING_ROOM', prefix: 'LIVING_ROOM_' },
+            { id: 'tvunit', name: 'TV UNIT', folder: 'SERVICES/TV_UNIT', prefix: 'TV_UNIT_' },
+            { id: 'pooja', name: 'POOJA ROOM', folder: 'SERVICES/POOJA_ROOM', prefix: 'POOJA_ROOM_' }
+        ];
+
+        // Store loaded service images
+        let galleryImages = {};
+
+        // Load services dynamically
+        async function loadServices() {
+            const tabsContainer = document.getElementById('service-tabs');
+            const servicesContainer = document.getElementById('services-container');
+            const extension = '.JPG';
+            const maxImages = 30; // Reduced from 50 for faster loading
+            
+            const tabFragment = document.createDocumentFragment();
+            const contentFragment = document.createDocumentFragment();
+            
+            for (let i = 0; i < SERVICES.length; i++) {
+                const service = SERVICES[i];
+                const images = [];
+                
+                // Load images sequentially
+                for (let j = 1; j <= maxImages; j++) {
+                    const imgPath = `${service.folder}/${service.prefix}${j}${extension}`;
+                    if (!await checkImageExists(imgPath)) break;
+                    images.push(imgPath);
+                }
+                
+                // Store images for gallery
+                galleryImages[service.id] = images;
+                
+                // Create tab button
+                const tab = document.createElement('button');
+                tab.className = i === 0 ? 'service-tab active' : 'service-tab';
+                tab.textContent = service.name;
+                tab.onclick = () => showService(service.id);
+                tabFragment.appendChild(tab);
+                
+                // Create service content
+                const content = document.createElement('div');
+                content.id = service.id;
+                content.className = i === 0 ? 'service-content active' : 'service-content';
+                
+                // Create grid with images
+                const gridHTML = images.map((imgPath, index) => `
+                    <div class="service-item" onclick="openGallery('${service.id}', ${index})">
+                        <img src="${imgPath}" alt="${service.name} ${index + 1}" loading="lazy">
+                    </div>
+                `).join('');
+                
+                content.innerHTML = `<div class="service-grid">${gridHTML}</div>`;
+                contentFragment.appendChild(content);
+                
+                console.log(`Loaded ${images.length} images for ${service.name}`);
+            }
+            
+            tabsContainer.appendChild(tabFragment);
+            servicesContainer.appendChild(contentFragment);
+        }
+
+        // Default captions for slideshow images
+        const SLIDESHOW_CAPTIONS = [
+            "Modern Residential Design",
+            "Contemporary Living Spaces",
+            "Sustainable Architecture",
+            "Innovative Design Solutions",
+            "Elegant Interior Design",
+            "Timeless Architecture",
+            "Creative Space Planning",
+            "Sophisticated Design"
+        ];
+
+        // Load slideshow images dynamically
+        async function loadSlideshow() {
+            const slideshowContainer = document.getElementById('slideshow-container');
+            const dotsContainer = document.getElementById('dots-container');
+            const basePath = 'HOME_PAGE_SLIDESHOW/SLIDESHOW_';
+            const extension = '.JPG';
+            const maxSlides = 15; // Reduced from 20
+            
+            const slideFragment = document.createDocumentFragment();
+            const dotFragment = document.createDocumentFragment();
+            let slideCount = 0;
+
+            // Load images sequentially
+            for (let i = 1; i <= maxSlides; i++) {
+                const imgPath = `${basePath}${i}${extension}`;
+                if (!await checkImageExists(imgPath, 1500)) break; // 1.5s timeout
+                
+                slideCount++;
+                const isFirst = i === 1;
+                
+                // Create slide
+                const slide = document.createElement('div');
+                slide.className = isFirst ? 'slide active' : 'slide';
+                slide.innerHTML = `
+                    <img src="${imgPath}" alt="Modern Architecture ${i}" loading="lazy">
+                    <div class="slide-caption">${SLIDESHOW_CAPTIONS[i - 1] || 'Beautiful Design'}</div>
+                `;
+                slideFragment.appendChild(slide);
+                
+                // Create dot
+                const dot = document.createElement('span');
+                dot.className = isFirst ? 'dot active' : 'dot';
+                dot.onclick = () => currentSlide(i);
+                dotFragment.appendChild(dot);
+            }
+
+            // Batch append slides and dots
+            slideshowContainer.appendChild(slideFragment);
+            dotsContainer.appendChild(dotFragment);
+
+            // Add navigation arrows
+            slideshowContainer.insertAdjacentHTML('beforeend', `
+                <a class="prev" onclick="changeSlide(-1)">❮</a>
+                <a class="next" onclick="changeSlide(1)">❯</a>
+            `);
+
+            console.log(`Loaded ${slideCount} slideshow images`);
+        }
+
+        // Check if an image exists (with timeout)
+        function checkImageExists(url, timeout = 2000) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                let timer;
+                
+                const cleanup = (result) => {
+                    clearTimeout(timer);
+                    img.onload = img.onerror = null;
+                    resolve(result);
+                };
+                
+                timer = setTimeout(() => cleanup(false), timeout);
+                img.onload = () => cleanup(true);
+                img.onerror = () => cleanup(false);
+                img.src = url;
+            });
+        }
+
         // Generate projects dynamically from config
-        function generateProjects() {
+        async function generateProjects() {
             const container = document.getElementById('projects-container');
             
             if (typeof PROJECTS === 'undefined') {
@@ -455,29 +720,112 @@
                 return;
             }
             
-            PROJECTS.forEach((project, index) => {
-                const projectHTML = `
-                    <div class="project">
-                        <div class="project-slideshow">
-                            ${project.images.map((img, imgIndex) => `
+            const stageDefinitions = [
+                { folder: 'INSIGHT', name: 'Insight' },
+                { folder: 'DESIGN', name: 'Design' },
+                { folder: 'EXECUTION', name: 'Execution' }
+            ];
+            
+            const fragment = document.createDocumentFragment();
+            const allProjectSlideIndexes = [];
+            
+            for (let projectIndex = 0; projectIndex < PROJECTS.length; projectIndex++) {
+                const project = PROJECTS[projectIndex];
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'project';
+                
+                // Detect available stages and load images
+                const availableStages = [];
+                for (const stage of stageDefinitions) {
+                    const images = await loadStageImages(project, stage.folder);
+                    if (images.length > 0) {
+                        availableStages.push({ ...stage, images });
+                    }
+                }
+                
+                // Create slideshows for available stages
+                const slideshowsHTML = availableStages.map((stage, stageIndex) => `
+                    <div class="project-slideshow-wrapper">
+                        <h4>${stage.name}</h4>
+                        <div class="project-slideshow" data-project="${projectIndex}" data-stage="${stageIndex}">
+                            ${stage.images.map((img, imgIndex) => `
                                 <div class="project-slide ${imgIndex === 0 ? 'active' : ''}">
-                                    <img src="${project.folder}/${img}" alt="${project.name} ${imgIndex + 1}">
+                                    <img src="${img}" alt="${project.name} ${stage.name} ${imgIndex + 1}" loading="lazy">
                                 </div>
                             `).join('')}
-                            <a class="project-prev" onclick="changeProjectSlide(${index}, -1)">❮</a>
-                            <a class="project-next" onclick="changeProjectSlide(${index}, 1)">❯</a>
-                        </div>
-                        <div class="project-info">
-                            <h3>${project.name}</h3>
-                            <p>${project.description}</p>
+                            <a class="project-prev" onclick="changeProjectSlide(${projectIndex}, ${stageIndex}, -1)">❮</a>
+                            <a class="project-next" onclick="changeProjectSlide(${projectIndex}, ${stageIndex}, 1)">❯</a>
                         </div>
                     </div>
+                `).join('');
+                
+                projectDiv.innerHTML = `
+                    <div class="project-header">
+                        <h3>${project.name}</h3>
+                        <p>${project.description}</p>
+                    </div>
+                    <div class="project-slideshows-container">
+                        ${slideshowsHTML}
+                    </div>
                 `;
-                container.innerHTML += projectHTML;
-            });
+                
+                fragment.appendChild(projectDiv);
+                allProjectSlideIndexes.push(new Array(availableStages.length).fill(1));
+            }
             
-            // Initialize project slide indexes after projects are created
-            window.projectSlideIndexes = new Array(PROJECTS.length).fill(1);
+            container.appendChild(fragment);
+            window.projectSlideIndexes = allProjectSlideIndexes;
+        }
+        
+        // Load images from a specific stage folder
+        async function loadStageImages(project, stageFolder) {
+            const basePath = `${project.folder}/${stageFolder}/`;
+            const extension = '.JPG';
+            const maxImages = 30; // Reduced from 50
+            const images = [];
+            
+            // Try multiple naming patterns
+            const projectName = project.name.replace(/\s+/g, '_');
+            const patterns = [
+                `${projectName}_${stageFolder}_`,     // KHAMMAM_INSIGHT_1.JPG
+                `${stageFolder}_`,                     // EXECUTION_1.JPG, DESIGN_1.JPG
+                `LIVING_ROOM_`,                        // LIVING_ROOM_1.JPG
+                `BEDROOM_`,                            // BEDROOM_1.JPG
+                `KITCHEN_`,                            // KITCHEN_1.JPG
+                `IMG_`,                                // IMG_7820.JPG
+            ];
+            
+            // Try each pattern
+            for (const prefix of patterns) {
+                const foundImages = [];
+                for (let i = 1; i <= maxImages; i++) {
+                    const imgPath = `${basePath}${prefix}${i}${extension}`;
+                    if (await checkImageExists(imgPath, 1500)) { // 1.5s timeout
+                        foundImages.push(imgPath);
+                    } else {
+                        break; // Stop when sequential number breaks
+                    }
+                }
+                
+                // If we found images with this pattern, use them
+                if (foundImages.length > 0) {
+                    images.push(...foundImages);
+                    break;
+                }
+            }
+            
+            // Special handling for IMG_ pattern with non-sequential numbers
+            if (images.length === 0 && basePath.includes('HASTINAPURAM/EXECUTION')) {
+                const imgNumbers = [7820, 7822, 7826, 7831, 7834, 8606, 8824, 8827];
+                for (const num of imgNumbers) {
+                    const imgPath = `${basePath}IMG_${num}${extension}`;
+                    if (await checkImageExists(imgPath, 1500)) {
+                        images.push(imgPath);
+                    }
+                }
+            }
+            
+            return images;
         }
 
         let slideIndex = 1;
@@ -507,35 +855,24 @@
         }
 
         function showSlides(n) {
-            let slides = document.getElementsByClassName("slide");
-            let dots = document.getElementsByClassName("dot");
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
             
-            if (!slides || slides.length === 0) return;
+            if (!slides.length) return;
             
-            if (n > slides.length) {
-                slideIndex = 1;
-            }
-            if (n < 1) {
-                slideIndex = slides.length;
-            }
+            // Handle wraparound
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
             
-            // Hide all slides
+            // Update slides and dots in single loop
             for (let i = 0; i < slides.length; i++) {
                 slides[i].classList.remove("active");
+                if (dots[i]) dots[i].classList.remove("active");
             }
             
-            // Remove active class from all dots
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("active");
-            }
-            
-            // Show current slide and activate dot
-            if (slides[slideIndex - 1]) {
-                slides[slideIndex - 1].classList.add("active");
-            }
-            if (dots[slideIndex - 1]) {
-                dots[slideIndex - 1].classList.add("active");
-            }
+            // Show current slide and dot
+            slides[slideIndex - 1].classList.add("active");
+            if (dots[slideIndex - 1]) dots[slideIndex - 1].classList.add("active");
         }
 
         // Auto-advance slideshow
@@ -549,38 +886,32 @@
 
         // Project slideshow functions
         function initProjectSlideshows() {
-            let projects = document.getElementsByClassName("project");
-            for (let i = 0; i < projects.length; i++) {
-                showProjectSlides(i, window.projectSlideIndexes[i]);
-            }
+            // Slideshows are already initialized with first slide active
         }
 
-        function changeProjectSlide(projectIndex, n) {
-            showProjectSlides(projectIndex, window.projectSlideIndexes[projectIndex] += n);
+        function changeProjectSlide(projectIndex, stageIndex, n) {
+            const currentIndex = window.projectSlideIndexes[projectIndex][stageIndex];
+            const newIndex = currentIndex + n;
+            showProjectSlides(projectIndex, stageIndex, newIndex);
         }
 
-        function showProjectSlides(projectIndex, n) {
-            let projects = document.getElementsByClassName("project");
-            if (!projects || !projects[projectIndex]) return;
+        function showProjectSlides(projectIndex, stageIndex, n) {
+            const slideshow = document.querySelector(`[data-project="${projectIndex}"][data-stage="${stageIndex}"]`);
+            if (!slideshow) return;
             
-            let slides = projects[projectIndex].getElementsByClassName("project-slide");
-            if (!slides || slides.length === 0) return;
+            const slides = slideshow.getElementsByClassName("project-slide");
+            if (!slides.length) return;
             
-            if (n > slides.length) {
-                window.projectSlideIndexes[projectIndex] = 1;
-            }
-            if (n < 1) {
-                window.projectSlideIndexes[projectIndex] = slides.length;
-            }
+            // Handle wraparound
+            if (n > slides.length) n = 1;
+            if (n < 1) n = slides.length;
             
-            // Hide all slides in this project
+            // Update index
+            window.projectSlideIndexes[projectIndex][stageIndex] = n;
+            
+            // Update slides
             for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
-            }
-            
-            // Show current slide
-            if (slides[window.projectSlideIndexes[projectIndex] - 1]) {
-                slides[window.projectSlideIndexes[projectIndex] - 1].classList.add("active");
+                slides[i].classList.toggle("active", i === n - 1);
             }
         }
 
@@ -675,42 +1006,6 @@
         }
 
         // Gallery functionality
-        const galleryImages = {
-            kitchen: [
-                'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1200&h=800&fit=crop'
-            ],
-            bedroom: [
-                'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&h=800&fit=crop'
-            ],
-            livingroom: [
-                'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1200&h=800&fit=crop'
-            ],
-            tvunit: [
-                'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1200&h=800&fit=crop',
-                'https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=1200&h=800&fit=crop'
-            ],
-            pooja: [
-                'POOJA_ROOM/POOJA_ROOM_1.JPG',
-                'POOJA_ROOM/POOJA_ROOM_2.JPG',
-                'POOJA_ROOM/POOJA_ROOM_3.JPG',
-                'POOJA_ROOM/POOJA_ROOM_4.JPG',
-                'POOJA_ROOM/POOJA_ROOM_5.JPG',
-                'POOJA_ROOM/POOJA_ROOM_6.JPG',
-                'POOJA_ROOM/POOJA_ROOM_7.JPG'
-            ]
-        };
-
         let currentGalleryService = '';
         let currentGalleryIndex = 0;
 
